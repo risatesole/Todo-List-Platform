@@ -70,3 +70,5 @@ if __name__ == "__main__":
 
     for task in task_list:
         print(f"ID: {task[0]}, Name: {task[1]}, Description: {task[2]}")
+    
+    task1.deleteTodo(task_id=1)  # Deleting the first task
