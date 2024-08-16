@@ -26,3 +26,12 @@ def create_task(task: Task):
 def read_tasks():
     task_list = todolist().getTodo()
     return {"tasks": task_list}
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int):
+    task = todolist().getTodo()
+    if not any(t[0] == task_id for t in task):
+        raise HTTPException(status_code=404, detail="Task not found")
+    
+    todolist().deleteTodo(task_id=task_id)
+    return {"message": "Task deleted successfully"}
