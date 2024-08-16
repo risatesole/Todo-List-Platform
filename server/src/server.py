@@ -1,4 +1,8 @@
-from fastapi import FastAPI
+"""
+Start Server:
+uvicorn your_module_name:app --host 0.0.0.0 --port 8000
+"""
+from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
 from module_todo import mySqlite, todolist
 
