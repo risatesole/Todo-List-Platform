@@ -1,12 +1,18 @@
-"""
-Start Server:
-uvicorn your_module_name:app --host 0.0.0.0 --port 8000
-"""
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from module_todo import mySqlite, todolist
 
 app = FastAPI()
+
+# CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust this for specific origins in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize the database
 mySqlite()
